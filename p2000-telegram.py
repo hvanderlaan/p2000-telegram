@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# File   : ./p2000.py
+# File   : ./p2000-telegram.py
 # Purpose: Python script for showing emergency services pager messages and
 #          send them via telegram
 #
