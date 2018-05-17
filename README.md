@@ -17,6 +17,7 @@ $ ./p2000.py -r <region code> -t
 
 ### todo
 - [x] add Telegram support
+- [ ] update README.md with telegram howto
 - [ ] cleanup python
 
 ### alterations of dutch alert regions
