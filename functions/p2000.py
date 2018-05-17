@@ -122,21 +122,21 @@ def convert_to_json(data):
 
     return json.loads(jsondata)
 
-def p2000_pp(el):
+def p2000_pp(msg):
     """ p2000 post processing """
-    regex = '.*[Zz][Ee][Vv].*|.*[Zz][Vv].*|.*690[0-9].*|^[Pp]\s?1|.*[Pp]rio.*|'
-    regex += '.*[Aa]12.*|.*[Aa]50.*|.*[Aa]15.*|.*[Aa]325.*|.*[Nn]325.*'
+    regex = '.*[Zz][Ee][Vv].*|.*[Zz][Vv].*|.*690[0-9].*|^[Pp] 1|.*[Pp]rio.*|'
+    regex += '.*[Aa]12.*|.*[Aa]50.*|.*[Aa]15.*|.*[AaNn]325.*'
 
-    if re.match(regex, str(el["message"])):
-        ret = '{} - {}\n'.format(el["date"], el["call_type"])
-        ret += '<strong>{}</strong>\n'.format(el["message"])
-        for i in xrange(len(el['called'])):
-            ret += '{}\n' .format(el['called'][i])
-    elif re.match('.*Lifeliner.*', str(el["call_type"])):
-        ret = '{} - {}\n'.format(el["date"], el["call_type"])
-        ret += '<strong>{}</strong>\n'.format(el["message"])
-        for i in xrange(len(el['called'])):
-            ret += '{}\n' .format(el['called'][i])
+    if re.match(regex, str(msg["message"])):
+        ret = '{} - {}\n'.format(msg["date"], msg["call_type"])
+        ret += '<strong>{}</strong>\n'.format(msg["message"])
+        for i in xrange(len(msg['called'])):
+            ret += '{}\n' .format(msg['called'][i])
+    elif re.match('.*Lifeliner.*', str(msg["call_type"])):
+        ret = '{} - {}\n'.format(msg["date"], msg["call_type"])
+        ret += '<strong>{}</strong>\n'.format(msg["message"])
+        for i in xrange(len(msg['called'])):
+            ret += '{}\n' .format(msg['called'][i])
     else:
         ret = ''
 
